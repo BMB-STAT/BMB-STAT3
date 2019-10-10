@@ -155,7 +155,7 @@ test_function("dbinom", args = c("x", "size", "prob"))
 
 ---
 
-## Binomial calculations (2)
+## Binomial calculations 4
 
 ```yaml
 type: NormalExercise
@@ -170,6 +170,51 @@ Remember the `pbinom()` function takes the same arguments as `dbinom()`
 `@instructions`
 What is the probability of getting **up to 3 heads** from 6 coins?
 (ie. 0, 1, 2 or 3 heads)
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+barplot(dbinom(0:6, 6, 1/2), names.arg = 0:6, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "6 coins")
+barplot(c(dbinom(0:3, 6, 1/2),rep(0,3)), names.arg = 0:6, space = 0, col = "red", add = T)
+```
+
+`@sample_code`
+```{r}
+# The probability of getting up to 3 heads from 6 coins
+
+
+```
+
+`@solution`
+```{r}
+# The probability of getting up to 3 heads from 6 coins
+pbinom(3, size = 6, prob = 0.5)
+
+```
+
+`@sct`
+```{r}
+test_function("pbinom", args = c("q", "size", "prob"))
+```
+
+---
+
+## Binomial calculations 5
+
+```yaml
+type: NormalExercise
+key: 3029b4d385
+lang: r
+xp: 100
+skills: 1
+```
+
+Now let's return to our heart attack example. 
+
+`@instructions`
+In a particular hospital, 15 people are admitted with a heart attack.
 
 `@hint`
 

@@ -211,7 +211,7 @@ xp: 100
 skills: 1
 ```
 
-Now let's return to our heart attack example. 
+Now let's return to our heart attack example.
 
 `@instructions`
 In a particular hospital, 15 people are admitted with a heart attack.

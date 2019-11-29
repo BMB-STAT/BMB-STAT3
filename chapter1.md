@@ -261,8 +261,6 @@ skills: 1
 In the eModule, we looked at the Birthday Problem. 
 Although we can't use the pbinom function to solve the Birthday problem, we can use it to answer a slightly different question - what is the probability that *you* share a birthday with someone else in a group of people. We have around 150 students in or STAT class this year - calculate the following probabilities using pbinom:
 
-
-
 `@instructions`
 - you share your birthday with 1 other person in our STAT class
 
@@ -412,7 +410,6 @@ xp: 50
 Now calculate the probability that you share your birthday with two other people in our STAT class?
 
 still to be completed!
-
 
 `@possible_answers`
 - [0.2730661]

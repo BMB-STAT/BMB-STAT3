@@ -75,9 +75,9 @@ An allergy treatment is known to be 80% effective.
 What is the probability that exactly 80% of these patients report no allergy symptoms after treatment?
 
 `@hint`
-The outcome could be defined as "report of symptoms" - a "yes" or "no" answer that is appropriate for the binomial distribution model.
-80% effective is the same as saying we would expect the allergy treatment to prevent allergy symptoms for 80% of those treated. 
-80% of 25 is 20.
+- The outcome could be defined as "report of symptoms" - a "yes" or "no" answer that is appropriate for the binomial distribution model.
+- 80% effective is the same as saying we would expect the allergy treatment to prevent allergy symptoms for 80% of those treated. 
+- 80% of 25 is 20.
 
 `@pre_exercise_code`
 ```{r}
@@ -216,78 +216,37 @@ skills: 1
 Now let's return to our heart attack example.
 
 `@instructions`
-In a particular hospital, 15 people are admitted with a heart attack.
+In a particular hospital, 15 people are admitted with a heart attack. <br />
+The chance of a fatal heart attack is the same as the previous question, 0.04 (4 in 100).<br />
+What is the probability that more than 4 people die as a result of that attack?<br />
+<br />
+The first bar chart shows the probability distribution of this problem, and the second is zoomed in so that you can see the area shaded in red which represents the probability density you are calculating in this question.
 
 `@hint`
-
+- remember, pbinom calculates the probability density up to the value in the given in the x argument - therefore you will need to flip this question around, and use 1 - pbinom to calculate the probability above a certain value of x.
 
 `@pre_exercise_code`
 ```{r}
-barplot(dbinom(0:6, 6, 1/2), names.arg = 0:6, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "6 coins")
-barplot(c(dbinom(0:3, 6, 1/2),rep(0,3)), names.arg = 0:6, space = 0, col = "red", add = T)
+par(mfrow=c(2,1))
+barplot(dbinom(0:15, 15, 0.04), names.arg = 0:15, space = 0, col = "grey", xlab = "No. of fatal heart attacks", ylab = "Probability", main = "Fatality of heart attack")
+barplot(c(rep(0,5),dbinom(5:15, 15, 0.04)), names.arg = 0:15, space = 0, col = "red", add = T)
+
+barplot(dbinom(0:15, 15, 0.04), names.arg = 0:15, space = 0, col = "grey", xlab = "No. of fatal heart attacks", ylab = "Probability", main = "zoom in - y axis from 0 to 0.0003", ylim=c(0,0.0003))
+barplot(c(rep(0,5),dbinom(5:15, 15, 0.04)), names.arg = 0:15, space = 0, col = "red", ylim=c(0,0.0003), add = T)
+
 ```
 
 `@sample_code`
 ```{r}
-# The probability of getting up to 3 heads from 6 coins
+# The probability of more than 4 people dying of a heart attack
 
 
 ```
 
 `@solution`
 ```{r}
-# The probability of getting up to 3 heads from 6 coins
-pbinom(3, size = 6, prob = 0.5)
-
-```
-
-`@sct`
-```{r}
-test_function("pbinom", args = c("q", "size", "prob"))
-```
-
----
-
-## Binomial calculations 6
-
-```yaml
-type: NormalExercise
-key: 1ef5730b88
-lang: r
-xp: 100
-skills: 1
-```
-
-In the eModule, we looked at the Birthday Problem. 
-Although we can't use the pbinom function to solve the Birthday problem, we can use it to answer a slightly different question - what is the probability that *you* share a birthday with someone else in a group of people. We have around 150 students in or STAT class this year - calculate the following probabilities using pbinom:
-
-`@instructions`
-- you share your birthday with 1 other person in our STAT class
-
-- you share your birthday with 2 other people in our STAT class
-
-- you share your birthday with 3 other people in our STAT class
-
-`@hint`
-
-
-`@pre_exercise_code`
-```{r}
-barplot(dbinom(0:6, 6, 1/2), names.arg = 0:6, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "6 coins")
-barplot(c(dbinom(0:3, 6, 1/2),rep(0,3)), names.arg = 0:6, space = 0, col = "red", add = T)
-```
-
-`@sample_code`
-```{r}
-# The probability of getting up to 3 heads from 6 coins
-
-
-```
-
-`@solution`
-```{r}
-# The probability of getting up to 3 heads from 6 coins
-pbinom(3, size = 6, prob = 0.5)
+# The probability of more than 4 people dying of a heart attack
+1- pbinom(4, size = 15, prob = 0.04)
 
 ```
 
@@ -366,7 +325,7 @@ key: b401887e8f
 xp: 50
 ```
 
-Although we can't use the dbinom or pbinom function to solve the Birthday problem, we can use these functions to answer a slightly different question - what is the probability that *you* share a birthday with someone else in a group of people. We have around 150 students in or STAT class this year - what is the probability that you share your birthday with one other person in our STAT class?
+Although we can't use the dbinom or pbinom function to solve the Birthday problem, we can use these functions to answer a slightly different question - what is the probability that *you* share a birthday with someone else in a group of people. assume we have 150 students in or STAT class this year - what is the probability that you share your birthday with exactly one other person in our STAT class?
 
 Remember the `dbinom()` function takes these arguments:
 `dbinom(x, size, prob)`
@@ -375,12 +334,13 @@ Remember the `dbinom()` function takes these arguments:
 - [0.2719908]
 - 0.05588852
 - 0.2730661
+- 0.05529484
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- We have around 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149
+- Assume we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149
 - Your birthday happens on a specific day, therefore the probability of someone sharing that specific day with you is 1/365 - this is the probability argument
-- Even though there are 2 of you with the same birthday, the question asks what is the probability that 1 other person shares their birthday with you, therefore there is only 1 success in all your 149 trials  - therefore x = 1
+- Even though there are 2 of you with the same birthday, we have to think about the size as number of trials, and x as number of successes, so you have 1 success when 1 person you compare your birthday with has the same one - therefore x = 1.
 
 `@pre_exercise_code`
 ```{r}
@@ -390,11 +350,11 @@ Remember the `dbinom()` function takes these arguments:
 `@sct`
 ```{r}
 # Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
-msg1 <- "This correct, well done!"
-msg2 <- "Not quite - remember that even though there are 2 of you with the same birthday, the question asks what is the probability that one other person shares their birthday with you - therefore x = 1"
+msg1 <- "This correct, well done! If you got it right first time, good for you - you realised that successes needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about exactly what the dbinom arguments need to be, and very similar to the previous question. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function.."
+msg2 <- "Not quite - remember that even though there are 2 of you with the same birthday, we have to think about the size as a number of trials - you comparing your birthday with 149 other birthdays - therefore size=149 - and x as number of successes, so you have 1 success when 1 person you compare your birthday with has the same one - therefore x = 1."
 msg3 <- "Not quite - we have around 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149"
-
-ex() %>% check_mc(1, feedback_msgs = c(msg1, msg2, msg3))
+msg4 <- "Not quite - remember that even though there are 2 of you with the same birthday, we have to think about the size as number of trials, and x as number of successes, so you have 1 success when 1 person you compare your birthday with has the same one - therefore x = 1."
+ex() %>% check_mc(1, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 ---
@@ -407,14 +367,57 @@ key: b67d405a70
 xp: 50
 ```
 
-Now calculate the probability that you share your birthday with two other people in our STAT class?
+Now calculate the probability that you share your birthday with exactly two other people in our STAT class?
 
-still to be completed!
+
 
 `@possible_answers`
-- [0.2730661]
+- 0.007443536
+- [ 0.05529484]
 - 0.05588852
 - 0.007574635
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- We still only calculating the probability you share your birthday with exactly 2 people, so use dbinom
+- Assume we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149
+- Your birthday happens on a specific day, therefore the probability of someone sharing that specific day with you is 1/365 - this is the probability argument
+- Even though there are 2 of you with the same birthday, we have to think about the size as number of trials, and x as number of successes, so you have 1 success when 1 person you compare your birthday with has the same one - therefore x = 1.
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+msg2 <- "This correct, well done! If you got it right first time, good for you - you realised that successes needed to equal 2, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about exactly what the dbinom arguments need to be, and very similar to the previous question. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function."
+msg4 <- "Not quite - remember that even though there are 3 of you with the same birthday, we have to think about the size as a number of trials - you comparing your birthday with 149 other birthdays - therefore size=149 - and x as number of successes, so you have 2 successes when 2 people you compare your birthday with have the same one - therefore x = 2."
+msg3 <- "Not quite - we have around 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149"
+msg1 <- "Not quite - remember that even though there are 3 of you with the same birthday, we have to think about the size as number of trials, and x as number of successes, so you have 2 successes when 2 people you compare your birthday with have the same one - therefore x = 2."
+ex() %>% check_mc(2, feedback_msgs = c(msg1, msg2, msg3, msg4))
+```
+
+---
+
+## The Birthday Problem even further!
+
+```yaml
+type: MultipleChoiceExercise
+key: 976d58c0a8
+xp: 50
+```
+
+Now calculate the probability that you share your birthday with at least two other people in our STAT class?
+
+To be completed
+
+
+`@possible_answers`
+- 0.9364516
+- 0.008253552
+- 0.9357064
+- [0.06354839]
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
@@ -430,9 +433,52 @@ still to be completed!
 `@sct`
 ```{r}
 # Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
-msg1 <- "This correct, well done!"
-msg2 <- "Not quite - remember that even though there are 2 of you with the same birthday, the question asks what is the probability that one other person shares their birthday with you - therefore x = 1"
-msg3 <- "Not quite - remember that even though there are 2 of you with the same birthday, the question asks what is the probability that one other person shares their birthday with you - therefore x = 1"
+msg4 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
+msg1 <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 2 - pbinom(1,149,1/365) gives you the probability that you share your birthday with none or 1 other person. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
+msg3 <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
+msg2 <- "Not quite - remember that even though there are 2 of you with the same birthday, we have to think about x as number of successes, so you have 1 success when 1 person you compare your birthday with have the same one - therefore x = 1. Using x = 2 and then subtracting from 1 would lead to you calculating the probability that at least 2 people have the same birthday as you"
 
-ex() %>% check_mc(1, feedback_msgs = c(msg1, msg2, msg3))
+ex() %>% check_mc(4, feedback_msgs = c(msg1, msg2, msg3, msg4))
+```
+
+---
+
+## The Birthday Problem - just one more!
+
+```yaml
+type: MultipleChoiceExercise
+key: b5a2b9bb17
+xp: 50
+```
+
+Now calculate the probability that you share your birthday with at three or more people in our STAT class?
+
+
+
+`@possible_answers`
+- 0.9364516
+- [0.008253552]
+- 0.9357064
+- 0.06354839
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- you need to use pbinom for this one
+- remember that pbinom uses the same arguments as dbinom
+- you also need to use the concept of mutual exclusivity - flip the problem around with a '1-'
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+# Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
+msg2 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
+msg1 <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 2 - pbinom(1,149,1/365) gives you the probability that you share your birthday with none or 1 other person. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
+msg3 <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
+msg4 <- "Not quite - remember that even though there are 3 of you with the same birthday, we have to think about x as number of successes, so you have 2 successes when 2 people you compare your birthday with have the same one - therefore x = 2. Using x = 3 and then subtracting from 1 would lead to you calculating the probability that at least 3 people have the same birthday as you"
+
+ex() %>% check_mc(4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```

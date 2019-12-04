@@ -410,7 +410,6 @@ xp: 50
 
 Now calculate the probability that you share your birthday with at least two other people in our STAT class?
 
-To be completed
 
 
 `@possible_answers`
@@ -433,10 +432,10 @@ To be completed
 `@sct`
 ```{r}
 # Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
-msg2 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
-msg <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 2 - pbinom(1,149,1/365) gives you the probability that you share your birthday with none or 1 other person. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
-msg <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
-msg <- "Not quite - remember that even though there are 2 of you with the same birthday, we have to think about x as number of successes, so you have 1 success when 1 person you compare your birthday with have the same one - therefore x = 1. Using x = 2 and then subtracting from 1 would lead to you calculating the probability that at least 2 people have the same birthday as you"
+msg2 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 2, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
+msg1 <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 2 - pbinom(1,149,1/365) gives you the probability that you share your birthday with none or 1 other person. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
+msg3 <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
+msg <- "Not quite - remember that even though there are 3 of you with the same birthday, we have to think about x as number of successes, so you have 2 successes when 2 people you compare your birthday with have the same one - therefore x = 2. Using x = 3 and then subtracting from 1 would lead to you calculating the probability that at least 4 people have the same birthday as you"
 
 ex() %>% check_mc(2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
@@ -451,9 +450,9 @@ key: b5a2b9bb17
 xp: 50
 ```
 
-Now calculate the probability that you share your birthday with at three or more people in our STAT class?
+Now calculate the probability that you share your birthday with at least three or more people in our STAT class?
 
-
+to be completed, feedback messages need finishing
 
 `@possible_answers`
 - 0.9364516

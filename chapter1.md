@@ -369,8 +369,6 @@ xp: 50
 
 Now calculate the probability that you share your birthday with exactly two other people in our STAT class?
 
-
-
 `@possible_answers`
 - 0.007443536
 - [ 0.05529484]
@@ -409,8 +407,6 @@ xp: 50
 ```
 
 Now calculate the probability that you share your birthday with at least two other people in our STAT class?
-
-
 
 `@possible_answers`
 - 0.9917464 

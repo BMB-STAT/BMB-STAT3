@@ -451,8 +451,6 @@ This is the last question about the birthday problem! Well done for persevering.
 
 Now calculate the probability that you share your birthday with _**at least**_ three or more people in our STAT class?
 
-
-
 `@possible_answers`
 - 0.9917464
 - 0.991595

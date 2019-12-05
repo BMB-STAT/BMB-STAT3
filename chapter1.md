@@ -325,7 +325,7 @@ key: b401887e8f
 xp: 50
 ```
 
-Although we can't use the dbinom or pbinom function to solve the Birthday problem, we can use these functions to answer a slightly different question - what is the probability that *you* share a birthday with someone else in a group of people. assume we have 150 students in or STAT class this year - what is the probability that you share your birthday with exactly one other person in our STAT class?
+Although we can't use the dbinom or pbinom function to solve the Birthday problem, we can use these functions to answer a slightly different question - what is the probability that *you* share a birthday with someone else in a group of people. Assume we have 150 students in or STAT class this year - what is the probability that you share your birthday with exactly one other person in our STAT class?
 
 Remember the `dbinom()` function takes these arguments:
 `dbinom(x, size, prob)`
@@ -350,7 +350,7 @@ Remember the `dbinom()` function takes these arguments:
 `@sct`
 ```{r}
 # Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
-msg1 <- "This correct, well done! If you got it right first time, good for you - you realised that successes needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about exactly what the dbinom arguments need to be, and very similar to the previous question. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function.."
+msg1 <- "This correct, well done! If you got it right first time, good for you - you realised that successes needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about exactly what the dbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function."
 msg2 <- "Not quite - remember that even though there are 2 of you with the same birthday, we have to think about the size as a number of trials - you comparing your birthday with 149 other birthdays - therefore size=149 - and x as number of successes, so you have 1 success when 1 person you compare your birthday with has the same one - therefore x = 1."
 msg3 <- "Not quite - we have around 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149"
 msg4 <- "Not quite - remember that even though there are 2 of you with the same birthday, we have to think about the size as number of trials, and x as number of successes, so you have 1 success when 1 person you compare your birthday with has the same one - therefore x = 1."
@@ -406,55 +406,13 @@ key: 976d58c0a8
 xp: 50
 ```
 
-Now calculate the probability that you share your birthday with at least two other people in our STAT class?
-
-`@possible_answers`
-- 0.9917464 
-- [0.008253552]
-- 0.9915950
-- 0.0008100164
-
-`@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- you need to use pbinom for this one
-- remember that pbinom uses the same arguments as dbinom
-- you also need to use the concept of mutual exclusivity - flip the problem around with a '1-'
-
-`@pre_exercise_code`
-```{r}
-
-```
-
-`@sct`
-```{r}
-# Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
-msg2 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 2, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
-msg1 <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 2 - pbinom(1,149,1/365) gives you the probability that you share your birthday with none or 1 other person. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
-msg3 <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
-msg <- "Not quite - remember that even though there are 3 of you with the same birthday, we have to think about x as number of successes, so you have 2 successes when 2 people you compare your birthday with have the same one - therefore x = 2. Using x = 3 and then subtracting from 1 would lead to you calculating the probability that at least 4 people have the same birthday as you"
-
-ex() %>% check_mc(2, feedback_msgs = c(msg1, msg2, msg3, msg4))
-```
-
----
-
-## The Birthday Problem - just one more!
-
-```yaml
-type: MultipleChoiceExercise
-key: b5a2b9bb17
-xp: 50
-```
-
-Now calculate the probability that you share your birthday with at least three or more people in our STAT class?
-
-to be completed, feedback messages need finishing
+Now calculate the probability that you share your birthday with **_at least_** two other people in our STAT class?
 
 `@possible_answers`
 - 0.9364516
-- [0.008253552]
-- 0.9357064
-- 0.06354839
+- [0.06354839]
+- 0.9915950
+- 0.0008100164
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
@@ -473,7 +431,52 @@ to be completed, feedback messages need finishing
 msg2 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 1, and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
 msg1 <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 2 - pbinom(1,149,1/365) gives you the probability that you share your birthday with none or 1 other person. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
 msg3 <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
-msg4 <- "Not quite - remember that even though there are 3 of you with the same birthday, we have to think about x as number of successes, so you have 2 successes when 2 people you compare your birthday with have the same one - therefore x = 2. Using x = 3 and then subtracting from 1 would lead to you calculating the probability that at least 3 people have the same birthday as you"
+msg4 <- "Not quite - first we are using the concept of mutual exclusivity, so using 1 - pbinom. We are interested in the probability that you share your birthday with at least 2 people, therefore we need to include the probability that you share your birthday with 2 people, 3 people, 4 people, 5... etc etc! In the probability density, this is everything that isn't the probability that you share your birthday with none or one person. Therefore x = 1. Using x = 2  then subtracting from 1 won't include the possibility that you share your birthday with 2 other people, and will instead give you the probability that you share your birthday with at least 3 people."
+
+ex() %>% check_mc(2, feedback_msgs = c(msg1, msg2, msg3, msg4))
+```
+
+---
+
+## The Birthday Problem - just one more!
+
+```yaml
+type: MultipleChoiceExercise
+key: b5a2b9bb17
+xp: 50
+```
+
+This is the last question about the birthday problem! Well done for persevering. We have used this example to fully explore the dbinom and pbinom functions, as well as the concept of mutual exclusivity.
+
+
+Now calculate the probability that you share your birthday with _**at least**_ three or more people in our STAT class?
+
+
+
+`@possible_answers`
+- 0.9917464
+- 0.991595
+- 0.0008100164
+- [0.008253552]
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- you need to use pbinom for this one
+- remember that pbinom uses the same arguments as dbinom
+- you also need to use the concept of mutual exclusivity - flip the problem around with a '1-'
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+# Check https://instructor-support.datacamp.com/en/articles/2375523-course-multiple-choice-with-console-exercises on how to write feedback messages for this exercise.
+msg4 <- "This correct, well done! If you got it right first time, good for you - you realised that you needed to use the concept of mutual exclusivity, and flip the problem round by using 1 - pbinom. You also realised that in the pbinom function, the successes argument, x, needed to equal 2,  and size needed to equal 149. If you didn't get it first time, don't worry - this question was intended to be quite tricky to get you to think about the concept of mutual exclusivity, and exactly what the pbinom arguments need to be. It may seem like a very small difference in probability that probably doesn't matter, and you're right, it is - but the point is to understand the function and concept."
+msg1 <- "Not quite - you need to use the concept of mutual exclusivity here. We want the probability that you share your birthday with at least 3 - pbinom(2,149,1/365) gives you the probability that you share your birthday with none or 1 or 2 other people. Therefore taking that value away from 1 gives you the probability you share your birthday with 2,3,4,5,6... etc etc!"
+msg2 <- "Not quite - we have 150 students in our STAT class, but remember, size is the number of trials - you comparing your birthday with 149 other birthdays - therefore size=149. You also need to think about the concept of mutual exclusivity"
+msg3 <- "Not quite - first we are using the concept of mutual exclusivity, so using 1 - pbinom. We are interested in the probability that you share your birthday with at least 3 people, therefore we need to include the probability that you share your birthday with 3 people, 4 people, 5 people, 6... etc etc! In the probability density, this is everything that isn't the probability that you share your birthday with none or one person or 2 people. Therefore x = 2. Using x = 3  then subtracting from 1 won't include the possibility that you share your birthday with 3 other people, and will instead give you the probability that you share your birthday with at least 4 people."
 
 ex() %>% check_mc(4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```

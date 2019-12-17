@@ -51,6 +51,8 @@ dbinom(3, size = 4, prob = 0.5)
 `@sct`
 ```{r}
 test_function("dbinom", args = c("x", "size", "prob"))
+
+success_msg("Well done, you have used dbinom correctly")
 ```
 
 ---
@@ -102,6 +104,8 @@ dbinom(20, size = 25, prob = 0.8)
 `@sct`
 ```{r}
 test_function("dbinom", args = c("x", "size", "prob"))
+
+success_msg("Well done, this is correct")
 ```
 
 ---
@@ -116,7 +120,7 @@ xp: 100
 skills: 1
 ```
 
-Here is another example.
+Here is another example to help you practice your binomial calculations.
 
 `@instructions`
 4 out of every 100 people who suffer a heart attack die as a result of that attack.
@@ -151,6 +155,8 @@ dbinom(0, size = 15, prob = 0.04)
 `@sct`
 ```{r}
 test_function("dbinom", args = c("x", "size", "prob"))
+
+success_msg("Well done, this one was a bit trickier and needed you to understand the different arguments within the function")
 ```
 
 ---
@@ -199,6 +205,8 @@ pbinom(3, size = 6, prob = 0.5)
 `@sct`
 ```{r}
 test_function("pbinom", args = c("q", "size", "prob"))
+
+success_msg("Well done, you used the pbinom function correctly")
 ```
 
 ---
@@ -253,6 +261,8 @@ barplot(c(rep(0,5),dbinom(5:15, 15, 0.04)), names.arg = 0:15, space = 0, col = "
 `@sct`
 ```{r}
 test_function("pbinom", args = c("q", "size", "prob"))
+
+success_msg("Well done, this is correct")
 ```
 
 ---
@@ -313,6 +323,8 @@ pnorm(170, mean = 163.2, sd = 6.54)
 `@sct`
 ```{r}
 test_function("pnorm", args = c("q", "mean", "sd"))
+
+success_msg("Well done, this is correct")
 ```
 
 ---

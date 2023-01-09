@@ -1,6 +1,6 @@
 ---
-title: 'STAT3 - Probability and Risk'
-description: 'Understanding uncertainty'
+title: STAT3 - Probability and Risk
+description: Understanding uncertainty
 ---
 
 ## Binomial calculations 1
@@ -10,7 +10,8 @@ type: NormalExercise
 key: 29adcc84b0
 lang: r
 xp: 100
-skills: 1
+skills:
+  - 1
 ```
 
 The STAT3 eModule outlines the use of `dbinom`, `pbinom`, and `pnorm`. If you haven't already, complete that eModule first before attempting the following exercises.
@@ -61,10 +62,11 @@ success_msg("Well done, you have used dbinom correctly")
 
 ```yaml
 type: NormalExercise
-key: 3821924567
+key: '3821924567'
 lang: r
 xp: 100
-skills: 1
+skills:
+  - 1
 ```
 
 Now let's try some more medically relevant examples.
@@ -117,7 +119,8 @@ type: NormalExercise
 key: ca1cd4f3cd
 lang: r
 xp: 100
-skills: 1
+skills:
+  - 1
 ```
 
 Here is another example to help you practice your binomial calculations.
@@ -168,7 +171,8 @@ type: NormalExercise
 key: bf295d9c99
 lang: r
 xp: 100
-skills: 1
+skills:
+  - 1
 ```
 
 Now lets look at the pbinom function. We use this to calculate the probability of observing up to a certain number of "successes" or events.
@@ -267,7 +271,8 @@ type: NormalExercise
 key: 35334c600a
 lang: r
 xp: 100
-skills: 1
+skills:
+  - 1
 ```
 
 The `pnorm()` function works just like the `pbinom()` function to calculate the cumulative probability, but of the normal distribution rather than the binomial. It takes the following arguments:
